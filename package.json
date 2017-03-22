@@ -1,10 +1,11 @@
 {
   "name": "bookmark-parser",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Find and parse latest bookmark backup of Firefox, Chrome and other browsers",
   "main": "index.js",
   "scripts": {
-    "test": "node test/*.test.js"
+    "pretest": "eslint . --fix",
+    "test": "NODE_ENV=development mocha -b --timeout 5000 --reporter spec test/*.test.js"
   },
   "keywords": [
     "bookmark",
@@ -15,7 +16,13 @@
   ],
   "author": "CCharlieli",
   "license": "MIT",
-  "devDependencies": {},
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "eslint": "^3.18.0",
+    "eslint-config-airbnb-base": "^11.1.1",
+    "eslint-plugin-import": "^2.2.0",
+    "mocha": "^3.2.0"
+  },
   "dependencies": {
     "bluebird": "^3.5.0",
     "lz4": "^0.5.3"

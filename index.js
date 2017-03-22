@@ -1,4 +1,5 @@
 'use strict;'
 
-const bookmark = require('lib/bookmark');
-module.exports = bookmark;
+const Bookmark = require('lib/bookmark');
+
+module.exports = Bookmark;
