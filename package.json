@@ -4,8 +4,7 @@
   "description": "Find and parse latest bookmark backup of Firefox, Chrome and other browsers",
   "main": "index.js",
   "scripts": {
-    "start": "node_modules/.bin/babel-node bin/bbm.js",
-    "bundle": "rm -rf dist/ && babel . --out-dir dist --ignore node_modules && cp README.md package.json dist/"
+    "test": "node test/*.test.js"
   },
   "keywords": [
     "bookmark",
@@ -16,15 +15,9 @@
   ],
   "author": "CCharlieli",
   "license": "MIT",
-  "devDependencies": {
-    "babel-cli": "^6.11.4",
-    "babel-plugin-transform-async-to-generator": "^6.8.0",
-    "babel-plugin-transform-es2015-modules-commonjs": "^6.11.5"
-  },
-  "babel": {
-    "plugins": [
-      "transform-es2015-modules-commonjs",
-      "transform-async-to-generator"
-    ]
+  "devDependencies": {},
+  "dependencies": {
+    "bluebird": "^3.5.0",
+    "lz4": "^0.5.3"
   }
 }

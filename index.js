@@ -1,4 +1,4 @@
 'use strict;'
 
-import bookmark from 'lib/bookmark';
-export default bookmark;
+const bookmark = require('lib/bookmark');
+module.exports = bookmark;
