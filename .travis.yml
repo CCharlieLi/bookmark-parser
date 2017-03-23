@@ -2,6 +2,15 @@ sudo: false
 language: node_js
 node_js:
   - "6"
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - g++-4.8
+env:
+  global:
+    - CXX=g++-4.8
 install:
   - npm install
 script:
