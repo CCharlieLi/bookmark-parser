@@ -3,6 +3,7 @@
 const chai = require('chai');
 const should = chai.should();
 const parser = require('../lib/parser');
+const BM = require('../');
 const Promise = require('bluebird');
 const fs = Promise.promisifyAll(require('fs'));
 
@@ -14,6 +15,14 @@ describe('Parser Test', () => {
       .then(res => {
         res.length.should.be.equal(6);
         res[0].title.should.be.equal('Most Visited');
-      })
+      });
   });
 });
+
+describe.skip('Lib Test', () => {
+  it('should return error with wrong schema', () => {
+    const bm = new BM();
+    return bm.findFirefoxBookmark().then(console.log);
+  });
+});
+
