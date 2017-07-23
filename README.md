@@ -9,8 +9,6 @@ Find and parse your browser's bookmark.
 ```
 npm i bookmark-parser --save
 
-or
-
 yarn add bookmark-parser
 ```
 
@@ -26,14 +24,17 @@ BMParser.readFromHTMLFile(htmlFilePath)
 // Read from (Firefox backup) bookmark jsonlz4 file
 BMParser.readFromJSONLZ4File(jsonlz4FilePath)
   .then(res => { ... });
+
+// Find Firefox bookmark backup file in your system
+BMParser.findFromLocalhost().then(res => { ... });
 ```
 
 ### TODO
 
-- [*] Parse Firefox jsonlz4 file
-- [*] Parse Firefox html file
-- [*] Find and Parse Firefox jsonlz4 file on MacOS
-- [*] Export bookmark into json file
+- [x] Parse Firefox jsonlz4 file
+- [x] Parse Firefox html file
+- [x] Find and Parse Firefox jsonlz4 file on MacOS
+- [x] Export bookmark into json file
 - [ ] Parse Chrome html file
 - [ ] Find and Parse Firefox jsonlz4 file on Windows/Linux
 - [ ] Find and Parse Chrome bookmark backup file on Windows/Linux/MacOS
