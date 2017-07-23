@@ -21,8 +21,8 @@ const BMParser = require('bookmark-parser');
 BMParser.readFromHTMLFile(htmlFilePath)
   .then(res => { ... });
 
-// Read from (NETSCAPE/Firefox) bookmark readStream
-BMParser.readFromHTMLFile(readStream)
+// Read from (NETSCAPE/Firefox) bookmark HTML readStream
+BMParser.readFromHTMLReadStream(readStream)
   .then(res => { ... });
 
 // Read from (Firefox backup) bookmark jsonlz4 file

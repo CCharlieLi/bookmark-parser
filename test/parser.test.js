@@ -65,6 +65,21 @@ describe('Lib Test', () => {
       });
   });
 
+  it('should read from html stream', () => {
+    return fs.readFileAsync(htmlFilePath, 'UTF-8')
+      .then(res => {
+        const rstream = new Readable();
+        rstream.push(res);
+        rstream.push(null);
+        return BMParser.readFromHTMLReadStream(rstream);
+      })
+      .then(res => {
+        const data = res.Bookmarks.children[1].children[1].children;
+        data.length.should.be.equal(4);
+        data[0].name.should.be.equal('Nucleo');
+      });
+  });
+
   it('should read from html file and export', () => {
     return BMParser.readFromHTMLFile(htmlFilePath, './export.json')
       .then(() => fs.readFileAsync('export.json', 'UTF-8'))
