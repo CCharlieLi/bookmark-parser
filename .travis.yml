@@ -1,7 +1,12 @@
 sudo: false
 language: node_js
 node_js:
+  - "8"
   - "6"
+cache:
+  yarn: true
+notifications:
+  email: false
 addons:
   apt:
     sources:
@@ -15,5 +20,3 @@ install:
   - npm install
 script:
   - npm test
-notifications:
-email: false
