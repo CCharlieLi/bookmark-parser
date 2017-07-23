@@ -6,6 +6,7 @@ const chai = require('chai');
 const should = chai.should();
 const path = require('path');
 const os = require('os');
+const Readable = require('stream').Readable;
 
 const HTMLParser = require('../lib/bookmark_parser/html_parser');
 const JSONLZ4Parser = require('../lib/bookmark_parser/jsonlz4_parser');
@@ -17,6 +18,21 @@ const jsonlz4FilePath = path.resolve(__dirname, './file/bookmarks.jsonlz4');
 describe('Parser Unit Test', () => {
   it('should parse html file', () => {
     return HTMLParser(htmlFilePath)
+      .then(res => {
+        const data = res.Bookmarks.children[1].children[1].children;
+        data.length.should.be.equal(4);
+        data[0].name.should.be.equal('Nucleo');
+      });
+  });
+
+  it('should parse html file from stram', () => {
+    return fs.readFileAsync(htmlFilePath, 'UTF-8')
+      .then(res => {
+        const rstream = new Readable();
+        rstream.push(res);
+        rstream.push(null);
+        return HTMLParser(rstream);
+      })
       .then(res => {
         const data = res.Bookmarks.children[1].children[1].children;
         data.length.should.be.equal(4);
