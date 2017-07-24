@@ -51,11 +51,11 @@ BMParser.findFromLocalhost(exportFilePath).then(res => { ... });
 
 ### TODO
 
-- [x] Parse Firefox jsonlz4 file
-- [x] Parse Firefox html file
+- [x] Parse Firefox jsonlz4 bookmark backup file
+- [x] Parse Firefox/Chrome html bookmark file
 - [x] Find and Parse Firefox jsonlz4 file on MacOS
 - [x] Export bookmark into json file
-- [ ] Parse Chrome html file
+- [ ] Option for deduplication
 - [ ] Find and Parse Firefox jsonlz4 file on Windows/Linux
 - [ ] Find and Parse Chrome bookmark backup file on Windows/Linux/MacOS
 
