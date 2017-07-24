@@ -21,16 +21,32 @@ const BMParser = require('bookmark-parser');
 BMParser.readFromHTMLFile(htmlFilePath)
   .then(res => { ... });
 
+// Read from (NETSCAPE/Firefox) bookmark HTML file and export
+BMParser.readFromHTMLFile(htmlFilePath, exportFilePath)
+  .then(res => { ... });
+
+
 // Read from (NETSCAPE/Firefox) bookmark HTML readStream
 BMParser.readFromHTMLReadStream(readStream)
+  .then(res => { ... });
+
+// Read from (NETSCAPE/Firefox) bookmark HTML readStream and export
+BMParser.readFromHTMLReadStream(readStream, exportFilePath)
   .then(res => { ... });
 
 // Read from (Firefox backup) bookmark jsonlz4 file
 BMParser.readFromJSONLZ4File(jsonlz4FilePath)
   .then(res => { ... });
 
+// Read from (Firefox backup) bookmark jsonlz4 file and export
+BMParser.readFromJSONLZ4File(jsonlz4FilePath, exportFilePath)
+  .then(res => { ... });
+
 // Find Firefox bookmark backup file in your system
 BMParser.findFromLocalhost().then(res => { ... });
+
+// Find Firefox bookmark backup file in your system and export
+BMParser.findFromLocalhost(exportFilePath).then(res => { ... });
 ```
 
 ### TODO
