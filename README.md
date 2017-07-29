@@ -49,6 +49,9 @@ BMParser.findFromLocalhost().then(res => { ... });
 BMParser.findFromLocalhost(exportFilePath).then(res => { ... });
 ```
 
+### [Change log](https://github.com/CCharlieLi/Bookmark/blob/master/History.md)
+
+
 ### TODO
 
 - [x] Parse Firefox jsonlz4 bookmark backup file

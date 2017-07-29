@@ -1,6 +1,6 @@
 {
   "name": "bookmark-parser",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Find and parse latest bookmark backup of Firefox, Chrome and other browsers",
   "main": "index.js",
   "scripts": {
