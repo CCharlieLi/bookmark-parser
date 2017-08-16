@@ -1,6 +1,6 @@
 # Bookmark
 
-[![Build Status](https://travis-ci.org/CCharlieLi/Bookmark.svg?branch=master)](https://travis-ci.org/CCharlieLi/Bookmark)
+[![Build Status](https://travis-ci.org/CCharlieLi/bookmark-parser.svg?branch=master)](https://travis-ci.org/CCharlieLi/bookmark-parser)
 
 Find and parse Firefox/Chrome bookmark HTML and jsonlz4 file into useable JSON object or export as JSON file.
 
