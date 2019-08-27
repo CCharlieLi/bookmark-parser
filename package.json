@@ -4,8 +4,14 @@
   "description": "Find and parse latest bookmark backup of Firefox, Chrome and other browsers",
   "main": "index.js",
   "scripts": {
-    "pretest": "eslint . --fix",
-    "test": "NODE_ENV=development mocha -b --timeout 5000 --reporter spec test/*.test.js"
+    "lint": "make lint",
+    "test": "make test",
+    "test-cov": "make test-cov",
+    "test-coveralls": "make test-coveralls",
+    "commitmsg": "commitlint -e $GIT_PARAMS",
+    "version": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0 && git add CHANGELOG.md",
+    "precommit": "make lint",
+    "prepush": "make lint"
   },
   "keywords": [
     "bookmark",
@@ -17,17 +23,25 @@
   "author": "CCharlieli",
   "license": "MIT",
   "devDependencies": {
-    "chai": "^3.5.0",
-    "eslint": "^3.18.0",
-    "eslint-config-wcl-backend": "^0.1.1",
-    "mocha": "^3.2.0"
+    "@commitlint/cli": "^8.1.0",
+    "@commitlint/config-conventional": "^8.1.0",
+    "chai": "4.2.0",
+    "coveralls": "^3.0.6",
+    "eslint": "6.2.2",
+    "eslint-config-prettier": "^6.1.0",
+    "eslint-config-wcl-backend": "0.3.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "husky": "^3.0.4",
+    "istanbul": "^0.4.5",
+    "mocha": "6.2.0",
+    "prettier": "^1.18.2"
   },
   "dependencies": {
     "bluebird": "^3.5.0",
     "json-stringify-safe": "^5.0.1",
-    "jsonfile": "^3.0.1",
+    "jsonfile": "5.0.0",
     "line-reader": "^0.4.0",
-    "lz4": "^0.5.3",
+    "lz4": "0.6.3",
     "uuid": "^3.1.0",
     "xml2json": "^0.11.0"
   },
@@ -37,10 +51,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/CCharlieLi/Bookmark.git"
+    "url": "git+https://github.com/CCharlieLi/bookmark-parser.git"
   },
   "bugs": {
-    "url": "https://github.com/CCharlieLi/Bookmark/issues"
+    "url": "https://github.com/CCharlieLi/bookmark-parser/issues"
   },
-  "homepage": "https://github.com/CCharlieLi/Bookmark#readme"
+  "homepage": "https://github.com/CCharlieLi/bookmark-parser#readme"
 }

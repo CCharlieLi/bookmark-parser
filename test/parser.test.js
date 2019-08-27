@@ -17,16 +17,16 @@ const jsonlz4FilePath = path.resolve(__dirname, './file/bookmarks.jsonlz4');
 
 describe('Parser Unit Test', () => {
   it('should parse html file', () => {
-    return HTMLParser(htmlFilePath)
-      .then(res => {
-        const data = res.Bookmarks.children[1].children[1].children;
-        data.length.should.be.equal(4);
-        data[0].name.should.be.equal('Nucleo');
-      });
+    return HTMLParser(htmlFilePath).then(res => {
+      const data = res.Bookmarks.children[1].children[1].children;
+      data.length.should.be.equal(4);
+      data[0].name.should.be.equal('Nucleo');
+    });
   });
 
   it('should parse html file from stram', () => {
-    return fs.readFileAsync(htmlFilePath, 'UTF-8')
+    return fs
+      .readFileAsync(htmlFilePath, 'UTF-8')
       .then(res => {
         const rstream = new Readable();
         rstream.push(res);
@@ -41,9 +41,15 @@ describe('Parser Unit Test', () => {
   });
 
   it('should parse jsonlz4 file', () => {
-    return fs.readFileAsync(jsonlz4FilePath)
+    return fs
+      .readFileAsync(jsonlz4FilePath)
       .then(JSONLZ4Parser)
-      .then(bmObject => bmObject.children.filter(each => each.title === 'Bookmarks Toolbar')[0].children)
+      .then(
+        bmObject =>
+          bmObject.children.filter(
+            each => each.title === 'Bookmarks Toolbar'
+          )[0].children
+      )
       .then(res => {
         res.length.should.be.equal(6);
         res[0].title.should.be.equal('Most Visited');
@@ -57,16 +63,16 @@ describe('Lib Test', () => {
   });
 
   it('should read from html file', () => {
-    return BMParser.readFromHTMLFile(htmlFilePath)
-      .then(res => {
-        const data = res.Bookmarks.children[1].children[1].children;
-        data.length.should.be.equal(4);
-        data[0].name.should.be.equal('Nucleo');
-      });
+    return BMParser.readFromHTMLFile(htmlFilePath).then(res => {
+      const data = res.Bookmarks.children[1].children[1].children;
+      data.length.should.be.equal(4);
+      data[0].name.should.be.equal('Nucleo');
+    });
   });
 
   it('should read from html stream', () => {
-    return fs.readFileAsync(htmlFilePath, 'UTF-8')
+    return fs
+      .readFileAsync(htmlFilePath, 'UTF-8')
       .then(res => {
         const rstream = new Readable();
         rstream.push(res);
@@ -92,7 +98,12 @@ describe('Lib Test', () => {
 
   it('should read from jsonlz4 file', () => {
     return BMParser.readFromJSONLZ4File(jsonlz4FilePath)
-      .then(bmObject => bmObject.children.filter(each => each.title === 'Bookmarks Toolbar')[0].children)
+      .then(
+        bmObject =>
+          bmObject.children.filter(
+            each => each.title === 'Bookmarks Toolbar'
+          )[0].children
+      )
       .then(res => {
         res.length.should.be.equal(6);
         res[0].title.should.be.equal('Most Visited');
@@ -103,7 +114,12 @@ describe('Lib Test', () => {
     return BMParser.readFromJSONLZ4File(jsonlz4FilePath, './export.json')
       .then(() => fs.readFileAsync('export.json', 'UTF-8'))
       .then(JSON.parse)
-      .then(bmObject => bmObject.children.filter(each => each.title === 'Bookmarks Toolbar')[0].children)
+      .then(
+        bmObject =>
+          bmObject.children.filter(
+            each => each.title === 'Bookmarks Toolbar'
+          )[0].children
+      )
       .then(res => {
         res.length.should.be.equal(6);
         res[0].title.should.be.equal('Most Visited');
@@ -111,15 +127,16 @@ describe('Lib Test', () => {
   });
 
   it('should find and read from jsonlz4 file on MacOS', () => {
-    return BMParser.findFromLocalhost()
-      .then(bmObject => {
-        if (os.type() === 'Darwin') {
-          const data = bmObject.children.filter(each => each.title === 'Bookmarks Toolbar')[0].children;
-          data.length.should.be.above(0);
-        } else {
-          return;
-        }
-      });
+    return BMParser.findFromLocalhost().then(bmObject => {
+      if (os.type() === 'Darwin') {
+        const data = bmObject.children.filter(
+          each => each.title === 'Bookmarks Toolbar'
+        )[0].children;
+        data.length.should.be.above(0);
+      } else {
+        return;
+      }
+    });
   });
 
   it('should find, read and export from jsonlz4 file on MacOS', () => {
@@ -128,7 +145,9 @@ describe('Lib Test', () => {
       .then(JSON.parse)
       .then(bmObject => {
         if (os.type() === 'Darwin') {
-          const data = bmObject.children.filter(each => each.title === 'Bookmarks Toolbar')[0].children;
+          const data = bmObject.children.filter(
+            each => each.title === 'Bookmarks Toolbar'
+          )[0].children;
           data.length.should.be.above(0);
         } else {
           return;

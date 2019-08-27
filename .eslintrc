@@ -1,8 +1,14 @@
 {
-  "env": {
-    "node": true,
-    "es6": true,
-    "mocha": true
+  extends: [
+    "wcl-backend",
+    "plugin:prettier/recommended"
+  ],
+  parserOptions: {
+    ecmaFeatures: {
+      experimentalObjectRestSpread: true
+    }
   },
-  "extends": "wcl-backend"
+  rules: {
+    no-console: 1
+  }
 }
